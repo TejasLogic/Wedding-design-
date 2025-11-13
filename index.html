@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Portrait Card Editor</title>
+    
+    <link rel="stylesheet" href="libs/tailwind.css" />
+    <link rel="stylesheet" href="libs/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="libs/fontawesome.min.css" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="main-container flex flex-col lg:flex-row items-start lg:items-center justify-center gap-6 p-4 lg:p-8 bg-white shadow-xl rounded-xl w-full max-w-7xl">
+        
+        <div class="swiper-container flex-shrink-0">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide" data-slide-index="0">
+                    <div class="image-area">
+                        <div class="draggable-text" data-text-id="1" style="color: #6a5839; font-family: 'serif-custom-1'; font-size: 24px; top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            We invite you and your family's <br> gracious presence and blessing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide" data-slide-index="1">
+                    <div class="image-area">
+                        <div class="draggable-text" data-text-id="2" style="color: #ffffff; font-family: 'serif-custom-2'; font-size: 32px; top: 15%; left: 50%; transform: translateX(-50%); text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                            Sujata Pradhan
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide" data-slide-index="2">
+                    <div class="image-area">
+                        <div class="draggable-text" data-text-id="3" style="color: #6a5839; font-family: 'serif-custom-3'; font-size: 20px; bottom: 5%; right: 5%; text-align: right; top: 85%; right: 5%; transform: translate(0, -50%);">
+                            With love, The Families
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        
+        <div class="editor-controls w-full lg:w-80 p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-inner">
+            <h3 class="text-xl font-bold mb-4 text-gray-800">Edit Options</h3>
+            
+            <div class="flex space-x-2 mb-4">
+                <button id="add-text-btn" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition duration-150 shadow-md">
+                    <i class="fas fa-font"></i> Add Text
+                </button>
+                <button id="add-image-btn" disabled class="flex-1 px-4 py-2 bg-gray-400 text-gray-700 font-semibold rounded-md shadow-md cursor-not-allowed">
+                    <i class="fas fa-image"></i> Add Image
+                </button>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div id="text-edit-panel" class="flex flex-col gap-4" style="display: none;">
+                
+                <div class="flex flex-col space-y-1">
+                    <label for="font-family" class="text-sm font-medium text-gray-600">Font Family:</label>
+                    <select id="font-family" class="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="Arial">Arial (Default)</option>
+                        <option value="serif-custom-1" class="custom-font">Fancy Script</option>
+                        <option value="serif-custom-2" class="custom-font">Formal Serif</option>
+                        <option value="serif-custom-3" class="custom-font">Decorative Serif</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col space-y-1">
+                    <label for="font-size" class="text-sm font-medium text-gray-600">Font Size (px):</label>
+                    <select id="font-size" class="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="16px">16px</option>
+                        <option value="20px">20px</option>
+                        <option value="24px">24px</option>
+                        <option value="32px">32px</option>
+                        <option value="40px">40px</option>
+                        <option value="48px">48px</option>
+                    </select>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <label for="font-color" class="text-sm font-medium text-gray-600">Text Color:</label>
+                    <input type="color" id="font-color" value="#000000" class="h-8 w-8 rounded-full border-none cursor-pointer">
+                </div>
+
+                <div class="flex flex-col space-y-1">
+                    <label class="text-sm font-medium text-gray-600">Text Alignment:</label>
+                    <div class="alignment-buttons flex justify-between space-x-2">
+                        <button data-align="left" class="flex-1 p-2 border border-gray-300 rounded-md bg-white hover:bg-gray-100 transition duration-150"><i class="fas fa-align-left"></i></button>
+                        <button data-align="center" class="flex-1 p-2 border border-gray-300 rounded-md bg-white hover:bg-gray-100 transition duration-150"><i class="fas fa-align-center"></i></button>
+                        <button data-align="right" class="flex-1 p-2 border border-gray-300 rounded-md bg-white hover:bg-gray-100 transition duration-150"><i class="fas fa-align-right"></i></button>
+                    </div>
+                </div>
+
+                <hr class="my-2">
+                
+                <button id="delete-text-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md transition duration-150 shadow-md">
+                    <i class="fas fa-trash"></i> Delete Text
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

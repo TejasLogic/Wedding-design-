@@ -1,0 +1,95 @@
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+.swiper-container {
+    width: 100%;
+    max-width: 320px;
+    height: calc(16 / 9 * 320px);
+    aspect-ratio: 9/16;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .swiper-container {
+        width: 80vw;
+        height: calc(80vw * 16 / 9);
+        max-width: 400px;
+        max-height: 80vh;
+    }
+}
+
+.image-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.swiper-slide:nth-child(1) .image-area {
+    background-image: linear-gradient(to bottom, #fdf8e6 0%, #fefed6 80%, #d4c3a3 100%);
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background-image: url('https://placehold.co/320x160/d4c3a3/8a6d47?text=%E2%99%AA%0ADecoration');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+}
+
+.swiper-slide:nth-child(2) .image-area {
+    background-image: linear-gradient(to right bottom, #c5d88f, #94b961);
+}
+
+.swiper-slide:nth-child(3) .image-area {
+    background-image: url('https://placehold.co/320x568/d4c3a3/8a6d47?text=Elaborate+Card+Design');
+}
+
+.draggable-text {
+    position: absolute;
+    padding: 8px 12px;
+    cursor: grab;
+    user-select: text;
+    line-height: 1.2;
+    z-index: 10;
+    white-space: pre-wrap;
+    outline: 2px dashed transparent;
+    transition: outline 0.1s ease;
+    min-width: 80px;
+    border-radius: 4px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+}
+
+.draggable-text.active {
+    outline: 2px dashed #007bff;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: grabbing;
+}
+.draggable-text[contenteditable="true"]:focus {
+    outline: 2px solid #007bff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: #333 !important;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 20px;
+}
+.swiper-button-prev:hover, .swiper-button-next:hover {
+    color: #007bff !important;
+}
+
+.custom-font[value="serif-custom-1"], .draggable-text[style*="serif-custom-1"] { font-family: 'Times New Roman', serif; }
+.custom-font[value="serif-custom-2"], .draggable-text[style*="serif-custom-2"] { font-family: 'Georgia', serif; }
+.custom-font[value="serif-custom-3"], .draggable-text[style*="serif-custom-3"] { font-family: 'Palatino', serif; }
